@@ -17,8 +17,12 @@ export const Register = () => {
   const [userinfo, setUserinfo] = useState({});
 
   const handleChange = (e) => {
-    // console.log("e.target.value");
-    setUserinfo({ ...userinfo, [e.target.name]: e.target.value });
+    if (e.target.name == "image") {
+      setUserinfo({ ...userinfo, [e.target.name]: e.target.file[0] });
+    } else {
+      // console.log("e.target.value");
+      setUserinfo({ ...userinfo, [e.target.name]: e.target.value });
+    }
   };
 
   //
