@@ -54,17 +54,30 @@ export const Register = () => {
 
         <div>
           <p>Username</p>
-          <input onChange={handleChange} />
+          <input
+            placeholder="write here DUH!"
+            name="username"
+            onChange={handleChange}
+          />
         </div>
 
         <div>
           <p>Password</p>
-          <input onChange={handleChange} />
+          <input
+            placeholder="Really?"
+            name="password"
+            onChange={handleChange}
+          />
         </div>
 
         <div>
           <p>Profile Image</p>
-          <input type="file" onChange={handleChange} />
+          <input
+            placeholder="monalisa"
+            name="image"
+            type="file"
+            onChange={handleChange}
+          />
         </div>
 
         <div>
