@@ -5,10 +5,26 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 //ourimports
-import { useQueryClient } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQueryClient,
+} from "@tanstack/react-query";
+//
+import { Home } from "./pages/Home";
+import { Register } from "./pages/Register";
+import { Login } from "./pages/Login";
+import { Me } from "./pages/Me";
+import { My } from "./pages/My";
+import { Users } from "./pages/Users";
+import { Deposit } from "./pages/Deposit";
+import { Withdraw } from "./pages/Withdraw";
+import { Transfer } from "./pages/Transfer";
+import { Logout } from "./pages/Logout";
+
 //ourimports
 
-const queryClient = new useQueryClient();
+const queryClient = new QueryClient(); // from tanstack query
 
 //
 const router = createBrowserRouter([
@@ -17,7 +33,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/register",
+    path: "/Register",
     element: <Register />,
   },
   {
@@ -56,10 +72,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
     <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
       {/* <Todos /> */}
-      <App />
     </QueryClientProvider>
   </React.StrictMode>
 );
