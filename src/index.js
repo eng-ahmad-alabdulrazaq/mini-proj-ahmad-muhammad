@@ -29,7 +29,7 @@ const queryClient = new QueryClient(); // from tanstack query
 //
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Home",
     element: <Home />,
   },
   {
