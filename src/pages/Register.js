@@ -8,17 +8,19 @@ import { useMutation } from "@tanstack/react-query";
 
 export const Register = () => {
   //
+
+  //used use state
+  const [userinfo, setUserinfo] = useState({});
+
   //used mutation
   const { mutate } = useMutation({
     mutationKey: ["register"],
     mutationFn: () => register(userinfo),
   });
-  //used use state
-  const [userinfo, setUserinfo] = useState({});
 
   const handleChange = (e) => {
     if (e.target.name == "image") {
-      setUserinfo({ ...userinfo, [e.target.name]: e.target.file[0] });
+      setUserinfo({ ...userinfo, [e.target.name]: e.target.files[0] });
     } else {
       // console.log("e.target.value");
       setUserinfo({ ...userinfo, [e.target.name]: e.target.value });
@@ -64,7 +66,7 @@ export const Register = () => {
         <div>
           <p>Password</p>
           <input
-            placeholder="Really?"
+            placeholder="please not abc or 123"
             name="password"
             onChange={handleChange}
           />
@@ -81,7 +83,14 @@ export const Register = () => {
         </div>
 
         <div>
-          <button onClick={mutate}>Register</button>
+          <button
+            onClick={() => {
+              alert("dhsjdh");
+              mutate();
+            }}
+          >
+            Register
+          </button>
         </div>
       </div>
     </div>

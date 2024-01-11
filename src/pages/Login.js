@@ -2,19 +2,25 @@
 
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
+import { login } from "../api/auth";
+
 //our imports
 
 //our imports
 
 export const Login = () => {
-  //used mutation
-  const { mutate } = useMutation({
-    mutationKey: `login`,
-    mutationFn: () => Login(userdata),
-  });
   //used use state
   const [userdata, setUserdata] = useState({});
 
+  //used mutation
+  const { mutate } = useMutation({
+    mutationKey: [`login`],
+    mutationFn: () => login(userdata),
+  });
+  // const navigate = useNavigate();
+  //
+
+  //
   const handleUserInput = (e) => {
     // console.log("e.target.value");
     setUserdata({ ...userdata, [e.target.name]: e.target.value });

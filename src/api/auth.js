@@ -1,24 +1,32 @@
 //\\ بسم الله الرحمن الرحيم //\\
 import instance from ".";
+import { saveToken } from "./storage";
+//
+
 const login = async (data) => {
-  const res = await instance.post("/auth/login", data);
+  const res = await instance.post("/mini-project/api/auth/login", data);
+  //save token
+  if (res.Token) saveToken(res.Token);
   return res;
 };
 
-const register = async (data) => {
+//
+
+const register = async (userinfo) => {
   const formdata = new FormData();
-
-  for (let key in data) {
-    // console.log(key);
-    formdata.append(key, data[key]);
+  //
+  for (let key in userinfo) {
+    formdata.append(key, userinfo[key]);
   }
+  const { data } = await instance.post(
+    "/mini-project/api/auth/register",
+    formdata
+  );
 
-  //replaced with for loop
-  // formdata.append(`username`, data.username);
-  // formdata.append(`password`, data.password);
-  // formdata.append(`image`, data.image);
-
-  const res = await instance.post("/auth/register", data);
-  return res;
+  if (data.token) {
+    saveToken(data.token);
+  }
+  return data;
 };
+
 export { login, register };
