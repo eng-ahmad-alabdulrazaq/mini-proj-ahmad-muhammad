@@ -21,6 +21,9 @@ import { Deposit } from "./pages/Deposit";
 import { Withdraw } from "./pages/Withdraw";
 import { Transfer } from "./pages/Transfer";
 import { Logout } from "./pages/Logout";
+//
+import "bootstrap/dist/css/bootstrap.css";
+import App from "./App";
 
 //ourimports
 
@@ -29,44 +32,50 @@ const queryClient = new QueryClient(); // from tanstack query
 //
 const router = createBrowserRouter([
   {
-    path: "/Home",
-    element: <Home />,
-  },
-  {
-    path: "/Register",
-    element: <Register />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/me",
-    element: <Me />,
-  },
-  {
-    path: "/my",
-    element: <My />,
-  },
-  {
-    path: "/users",
-    element: <Users />,
-  },
-  {
-    path: "/deposit",
-    element: <Deposit />,
-  },
-  {
-    path: "/withdraw",
-    element: <Withdraw />,
-  },
-  {
-    path: "/tansfer",
-    element: <Transfer />,
-  },
-  {
-    path: "/logout",
-    element: <Logout />,
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/me",
+        element: <Me />,
+      },
+      {
+        path: "/my",
+        element: <My />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/deposit",
+        element: <Deposit />,
+      },
+      {
+        path: "/withdraw",
+        element: <Withdraw />,
+      },
+      {
+        path: "/transfer",
+        element: <Transfer />,
+      },
+      {
+        path: "/logout",
+        element: <Logout />,
+      },
+    ],
   },
 ]);
 

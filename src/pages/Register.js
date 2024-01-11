@@ -43,7 +43,7 @@ export const Register = () => {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          width: "20%",
+          width: "30%",
           height: "60%",
           border: "1px solid black",
           borderRadius: "12px",
@@ -71,7 +71,7 @@ export const Register = () => {
         </div>
 
         <div>
-          <p>Profile Image</p>
+          <p>Profile Image come on monalisa</p>
           <input
             placeholder="monalisa"
             name="image"
