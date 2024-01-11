@@ -1,8 +1,10 @@
 //\\ بسم الله الرحمن الرحيم //\\
 
 import { useMutation } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { login } from "../api/auth";
+import Usercontext from "../context/Usercontext";
+import { useNavigate } from "react-router-dom";
 
 //our imports
 
@@ -11,13 +13,20 @@ import { login } from "../api/auth";
 export const Login = () => {
   //used use state
   const [userdata, setUserdata] = useState({});
+  const [user, setUser] = useContext(Usercontext);
 
+  const navigate = useNavigate();
   //used mutation
   const { mutate } = useMutation({
     mutationKey: [`login`],
     mutationFn: () => login(userdata),
+    onSuccess: () => {
+      setUser(true);
+      // navigate to home page
+      navigate("/");
+    },
   });
-  // const navigate = useNavigate();
+
   //
 
   //
