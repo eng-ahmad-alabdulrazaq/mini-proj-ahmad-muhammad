@@ -22,16 +22,20 @@ export const Users = () => {
     <div>
       <div>
         <h2>Users</h2>
-        <div>
+        <div
+          style={{
+            display: "flex",
+          }}
+        >
           {users?.map((user) => (
             <div key={user.id}>
-              <h1>{user.username}</h1>
+              <h1>{user?.username}</h1>
 
               <img
                 src={`https://react-bank-project.eapi.joincoded.com/${user.image}`}
                 alt="User"
               />
-              <p>{user.balance}</p>
+              <p>{user?.balance}</p>
             </div>
           ))}
         </div>

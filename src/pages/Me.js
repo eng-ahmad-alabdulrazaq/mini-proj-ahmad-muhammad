@@ -18,7 +18,7 @@ export const Me = ({ id }) => {
           <div>
             <h1>{users?.username}</h1>
             <img
-              src={`https://react-bank-project.eapi.joincoded.com/${users.image}`}
+              src={`https://react-bank-project.eapi.joincoded.com/${users?.image}`}
               alt="User"
             />
             <p>{users?.balance}</p>
