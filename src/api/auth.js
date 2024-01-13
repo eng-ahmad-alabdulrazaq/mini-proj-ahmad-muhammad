@@ -1,13 +1,18 @@
 //\\ بسم الله الرحمن الرحيم //\\
 import instance from ".";
-import { saveToken } from "./storage";
+import { getToken, saveToken } from "./storage";
+//
+
 //
 
 const login = async (data) => {
   const res = await instance.post("/mini-project/api/auth/login", data);
   //save token
-  if (res.Token) saveToken(res.Token);
-  return res;
+  const token = res.data.token;
+  if (token) {
+    saveToken(token);
+  }
+  return res.data;
 };
 
 //
@@ -18,15 +23,26 @@ const register = async (userinfo) => {
   for (let key in userinfo) {
     formdata.append(key, userinfo[key]);
   }
-  const { data } = await instance.post(
-    "/mini-project/api/auth/register",
-    formdata
-  );
+  const res = await instance.post("/mini-project/api/auth/register", formdata);
+  const token = res.data.token;
 
-  if (data.token) {
-    saveToken(data.token);
+  if (token) {
+    saveToken(token);
   }
-  return data;
+  return res.data;
 };
 
-export { login, register };
+//NEW
+// for me
+const me = async () => {
+  const { data } = await instance.get("/mini-project/api/auth/me");
+  if (data.token) getToken(data.token);
+  return data;
+};
+// for all user
+const getallusers = async () => {
+  const { data } = await instance.get("/mini-project/api/auth/users");
+  if (data.token) getToken(data.token);
+  return data;
+};
+export { login, register, me, getallusers };

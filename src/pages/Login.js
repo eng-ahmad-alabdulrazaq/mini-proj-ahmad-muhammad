@@ -23,7 +23,7 @@ export const Login = () => {
     onSuccess: () => {
       setUser(true);
       // navigate to home page
-      navigate("/");
+      navigate("/me");
     },
   });
 
@@ -43,8 +43,12 @@ export const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
       }}
     >
+      <div>
+        <h1> Welcome to Ruloka$BANK! </h1>
+      </div>
       <div
         style={{
           display: "flex",
@@ -58,6 +62,7 @@ export const Login = () => {
           gap: "5px",
         }}
       >
+        <h1>{user ? "true" : "false"}</h1>
         <h2>Login</h2>
         <p>username</p>
         <input name="username" onChange={handleUserInput}></input>

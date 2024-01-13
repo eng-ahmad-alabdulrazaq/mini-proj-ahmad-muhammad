@@ -1,9 +1,11 @@
 //\\ بسم الله الرحمن الرحيم //\\
 
 //ourimports
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { register } from "../api/auth";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import Usercontext from "../context/Usercontext";
 //ourimports
 
 export const Register = () => {
@@ -11,11 +13,18 @@ export const Register = () => {
 
   //used use state
   const [userinfo, setUserinfo] = useState({});
+  const [user, setUser] = useContext(Usercontext);
+  const navigate = useNavigate();
 
   //used mutation
   const { mutate } = useMutation({
     mutationKey: ["register"],
     mutationFn: () => register(userinfo),
+    onSuccess: () => {
+      setUser(true);
+      // navigate to home page
+      navigate("/login");
+    },
   });
 
   const handleChange = (e) => {
@@ -37,8 +46,14 @@ export const Register = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
       }}
     >
+      <div>
+        <div>
+          <h1> Welcome to Ruloka$BANK! </h1>
+        </div>
+      </div>
       <div
         style={{
           display: "flex",
@@ -85,7 +100,7 @@ export const Register = () => {
         <div>
           <button
             onClick={() => {
-              alert("dhsjdh");
+              //alert("dhsjdh");
               mutate();
             }}
           >
