@@ -45,6 +45,13 @@ const getallusers = async () => {
   if (data.token) getToken(data.token);
   return data;
 };
+///
+const transactions = async () => {
+  const { data } = await instance.get("/mini-project/api/transactions/my");
+
+  return data;
+};
+//
 
 const transfer = async (userInfo) => {
   const { data } = await instance.put(
@@ -71,4 +78,13 @@ const withdraw = async (amount) => {
   return data;
 };
 //
-export { login, register, me, getallusers, transfer, deposit, withdraw };
+export {
+  login,
+  register,
+  me,
+  getallusers,
+  transfer,
+  deposit,
+  withdraw,
+  transactions,
+};

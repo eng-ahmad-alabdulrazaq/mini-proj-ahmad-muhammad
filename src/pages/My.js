@@ -2,25 +2,49 @@
 
 import React from "react";
 import { useState } from "react";
+import { transactions } from "../api/auth";
+import { Mutation, useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export const My = () => {
-  const [x, setx] = useState("write here");
+  const { data: transactionsData } = useQuery({
+    queryKey: ["transactions"],
+    queryFn: () => transactions(),
+  });
 
-  function handlechange(event) {
-    setx(event.target.value);
-  }
+  // console.log(users);
+  //
+  //
+  //
+  const handleUserInput = (e) => {
+    // console.log("e.target.value");
+    //
+    // setUserdata({ data });
+  };
+  //
+
+  console.log(transactionsData);
 
   return (
     <div>
       <div>
-        Searchingbar
-        <label>Search</label>
-        <p>{x}</p>
-        <input onChange={handlechange} />
-      </div>
-      <div>
-        <h1>Deposit</h1>
-        <input name="username"></input>
+        <h2>transactions</h2>
+        <div class="d-flex flex-wrap gap-3 justify-content-center ">
+          {transactionsData?.map((transaction) => (
+            <div key={transaction.id} className="col-3">
+              <h1>{transaction?.type}</h1>
+
+              {/* <img
+                src={`https://react-bank-project.eapi.joincoded.com/${user.image}`}
+                alt="User"
+                width={"120px"}
+                height={"120px"}
+              /> */}
+              <p>{transaction?.amount}</p>
+              <p>{transaction?.createdAt}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
