@@ -39,6 +39,9 @@ const me = async () => {
 
   return data;
 };
+const update = async () => {
+  const { data } = await instance.put("/mini-project/api/auth/profile");
+};
 // for all user
 const getallusers = async () => {
   const { data } = await instance.get("/mini-project/api/auth/users");
@@ -87,4 +90,5 @@ export {
   deposit,
   withdraw,
   transactions,
+  update,
 };

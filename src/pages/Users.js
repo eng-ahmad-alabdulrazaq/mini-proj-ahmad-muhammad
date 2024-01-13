@@ -45,8 +45,6 @@ export const Users = () => {
                 height={"120px"}
               />
               <p>{user?.balance}</p>
-              <input></input>
-              <button className="btn btn-primary" onClick={mutate}></button>
             </div>
           ))}
         </div>
