@@ -1,7 +1,7 @@
 //\\ بسم الله الرحمن الرحيم //\\
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getallusers } from "../api/auth";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getallusers, transfer } from "../api/auth";
 import { Me } from "./Me";
 
 export const Users = () => {
@@ -9,9 +9,20 @@ export const Users = () => {
     queryKey: ["users"],
     queryFn: getallusers,
   });
-
+  const { mutate } = useMutation({
+    mutationKey: [`login`],
+    mutationFn: () => transfer(),
+  });
   console.log(users);
-
+  //
+  //
+  //
+  const handleUserInput = (e) => {
+    // console.log("e.target.value");
+    //
+    // setUserdata({ data });
+  };
+  //
   const User = { data: users }.data?.data
     ?.filter((user) =>
       user.name?.tolowerCase().includes({ data: users }.tolowerCase())
@@ -22,20 +33,20 @@ export const Users = () => {
     <div>
       <div>
         <h2>Users</h2>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
+        <div class="d-flex flex-wrap gap-3 justify-content-center ">
           {users?.map((user) => (
-            <div key={user.id}>
+            <div key={user.id} className="col-3">
               <h1>{user?.username}</h1>
 
               <img
                 src={`https://react-bank-project.eapi.joincoded.com/${user.image}`}
                 alt="User"
+                width={"120px"}
+                height={"120px"}
               />
               <p>{user?.balance}</p>
+              <input></input>
+              <button className="btn btn-primary" onClick={mutate}></button>
             </div>
           ))}
         </div>

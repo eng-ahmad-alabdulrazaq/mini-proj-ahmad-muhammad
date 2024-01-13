@@ -36,7 +36,7 @@ const register = async (userinfo) => {
 // for me
 const me = async () => {
   const { data } = await instance.get("/mini-project/api/auth/me");
-  if (data.token) getToken(data.token);
+
   return data;
 };
 // for all user
@@ -45,4 +45,29 @@ const getallusers = async () => {
   if (data.token) getToken(data.token);
   return data;
 };
-export { login, register, me, getallusers };
+
+const transfer = async () => {
+  const { data } = await instance.put(
+    "/mini-project/api/transactions/transfer/<username>"
+  );
+  return data;
+};
+
+//
+const deposit = async (amount) => {
+  const { data } = await instance.put(
+    "/mini-project/api/transactions/deposit",
+    { amount }
+  );
+  return data;
+};
+//
+const withdraw = async (amount) => {
+  const { data } = await instance.put(
+    "/mini-project/api/transactions/withdraw",
+    { amount }
+  );
+  return data;
+};
+//
+export { login, register, me, getallusers, transfer, deposit, withdraw };
