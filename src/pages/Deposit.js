@@ -1,12 +1,17 @@
 //\\ بسم الله الرحمن الرحيم //\\
 //our imports
 import React, { useState } from "react";
-import { deposit, me, withdraw } from "../api/auth";
+import { deposit, me, withdraw, transfer } from "../api/auth";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 //our imports
 export const Deposit = () => {
   const client = useQueryClient();
+  const [userdata, setUserdata] = useState({});
+  const handleUserInput = (e) => {
+    // console.log("e.target.value");
+    setUserdata({ ...userdata, [e.target.name]: e.target.value });
+  };
   // return <div>Deposit</div>;//old
   //from Register.js
   //deposit function
@@ -63,6 +68,11 @@ export const Deposit = () => {
     queryKey: ["user"],
     queryFn: () => me(),
     onSuccess: client.invalidateQueries(),
+  });
+  //
+  const { mutate: transferM } = useMutation({
+    mutationKey: [`transfer`],
+    mutationFn: () => transfer(userdata),
   });
   //
   return (
@@ -173,15 +183,20 @@ export const Deposit = () => {
           <h2>Transfer</h2>
           <input
             type="number"
+            name="amount"
             placeholder="transfer amount"
-            onChange={useramount}
+            onChange={handleUserInput}
           />
 
-          <input placeholder="transfer acount username" />
+          <input
+            name="username"
+            placeholder="transfer acount username"
+            onChange={handleUserInput}
+          />
           {/* inside button below */}
           {/* onClick={() => IncOnClick(amount) } */}
           {/* inside button below */}
-          <button>click here to transfer</button>
+          <button onClick={() => transferM()}>click here to transfer</button>
         </div>
         {/*  */}
       </div>
