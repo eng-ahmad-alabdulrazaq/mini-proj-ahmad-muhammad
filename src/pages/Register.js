@@ -23,7 +23,9 @@ export const Register = () => {
     onSuccess: () => {
       setUser(true);
       // navigate to home page
-      navigate("/login");
+
+      //lastchange
+      navigate("/me");
     },
   });
 
@@ -55,6 +57,7 @@ export const Register = () => {
         </div>
       </div>
       <div
+        className="nav-item nav-link text-white bg-danger"
         style={{
           display: "flex",
           justifyContent: "center",

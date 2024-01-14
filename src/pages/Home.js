@@ -21,6 +21,9 @@ export const Home = () => {
         }}
       >
         <div
+          //saturday style
+          class="p-3 mb-2 bg-danger text-white"
+          //saturday style
           style={{
             display: "flex",
             justifyContent: "center",
@@ -33,7 +36,14 @@ export const Home = () => {
             gap: "5px",
           }}
         >
-          <h1>Ruloka$BANK!</h1>
+          <h1
+
+          // style={{
+          //   font: "revert-layer",
+          // }}
+          >
+            Ruloka$BANK!
+          </h1>
           <p>
             Welcome to our bank, by achieving time travel using hogwartz dark
             magic we managed to create artificial gold you know that shiny clunk

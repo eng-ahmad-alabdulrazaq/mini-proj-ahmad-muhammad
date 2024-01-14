@@ -31,7 +31,12 @@ export const Users = () => {
 
   return (
     <div>
-      <div>
+      <div
+        //saturday style
+        class="p-3 mb-2 bg-danger text-white"
+
+        //saturdaystyele
+      >
         <h2>Users</h2>
         <div class="d-flex flex-wrap gap-3 justify-content-center ">
           {users?.map((user) => (

@@ -50,6 +50,9 @@ export const Login = () => {
         <h1> Welcome to Ruloka$BANK! </h1>
       </div>
       <div
+        //
+        className="nav-item nav-link text-white bg-danger"
+        //
         style={{
           display: "flex",
           justifyContent: "center",

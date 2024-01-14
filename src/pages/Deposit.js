@@ -120,6 +120,9 @@ export const Deposit = () => {
       >
         {/*  */}
         <div
+          //saturday style
+          class="p-3 mb-2 bg-danger text-white"
+          //saturday style
           style={{
             display: "flex",
             justifyContent: "center",
@@ -144,6 +147,9 @@ export const Deposit = () => {
         {/*  */}
         {/*  */}
         <div
+          //saturday style
+          class="p-3 mb-2 bg-danger text-white"
+          //saturday style
           style={{
             display: "flex",
             justifyContent: "center",
@@ -168,6 +174,9 @@ export const Deposit = () => {
         {/*  */}
         {/*  */}
         <div
+          //saturday style
+          class="p-3 mb-2 bg-danger text-white"
+          //saturday style
           style={{
             display: "flex",
             justifyContent: "center",

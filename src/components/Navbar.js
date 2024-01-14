@@ -10,14 +10,14 @@ const Navbar = () => {
   const [user, setUser] = useContext(Usercontext);
   const navigate = useNavigate();
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a className="navbar-brand text-white bg-danger">
         {/* Navbar */}
         Ruloka$BANK!
         {/* Navbar */}
       </a>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNavAltMarkup"
@@ -25,33 +25,47 @@ const Navbar = () => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <NavLink class="nav-item nav-link active" to="/">
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+          <NavLink className="nav-item nav-link text-danger bg-white" to="/">
             Home
           </NavLink>
 
           {user == true ? (
             <>
-              <NavLink class="nav-item nav-link " to="/me">
+              <NavLink
+                className="nav-item nav-link text-danger bg-white"
+                to="/me"
+              >
                 Me
               </NavLink>
 
-              <NavLink class="nav-item nav-link " to="/my">
+              <NavLink
+                className="nav-item nav-link text-danger bg-white"
+                to="/my"
+              >
                 My
               </NavLink>
 
-              <NavLink class="nav-item nav-link " to="/users">
+              <NavLink
+                className="nav-item nav-link text-danger bg-white"
+                to="/users"
+              >
                 Users
               </NavLink>
 
-              <NavLink class="nav-item nav-link disabled" to="deposit">
-                Deposit
+              <NavLink
+                className="nav-item nav-link text-danger bg-white"
+                to="/deposit"
+              >
+                {/* Deposit */}
+                Operations
+                {/* the same except for the string in the navbar */}
               </NavLink>
 
-              {/* <NavLink class="nav-item nav-link " to="transfer">
+              {/* <NavLink className="nav-item nav-link " to="transfer">
                 Transfer
               </NavLink>
 
@@ -59,6 +73,7 @@ const Navbar = () => {
                 Withdraw
               </NavLink> */}
               <button
+                className="navbar-brand text-white bg-danger"
                 onClick={() => {
                   deleteToken();
                   setUser(false);
@@ -70,11 +85,17 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <NavLink class="nav-item nav-link" to="/register">
+              <NavLink
+                className="nav-item nav-link text-white bg-danger"
+                to="/register"
+              >
                 Register
               </NavLink>
               .
-              <NavLink class="nav-item nav-link" to="login">
+              <NavLink
+                className="nav-item nav-link text-white bg-danger"
+                to="login"
+              >
                 Login
               </NavLink>
             </>
