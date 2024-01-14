@@ -51,13 +51,13 @@ const Navbar = () => {
                 Deposit
               </NavLink>
 
-              <NavLink class="nav-item nav-link " to="transfer">
+              {/* <NavLink class="nav-item nav-link " to="transfer">
                 Transfer
               </NavLink>
 
               <NavLink class="nav-item nav-link " to="withdraw">
                 Withdraw
-              </NavLink>
+              </NavLink> */}
               <button
                 onClick={() => {
                   deleteToken();

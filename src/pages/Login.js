@@ -62,7 +62,7 @@ export const Login = () => {
           gap: "5px",
         }}
       >
-        <h1>{user ? "true" : "false"}</h1>
+        {/* <h1>{user ? "true" : "false"}</h1> */}
         <h2>Login</h2>
         <p>username</p>
         <input name="username" onChange={handleUserInput}></input>

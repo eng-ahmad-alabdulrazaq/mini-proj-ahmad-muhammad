@@ -31,6 +31,8 @@ export const My = () => {
   // setamount1(e.target.value);
   //};
   //
+
+  //
   const handleUserInput = (e) => {
     // console.log("e.target.value");
     //
@@ -78,13 +80,34 @@ export const My = () => {
       </div>
       <div class="d-flex flex-wrap gap-3 justify-content-center ">
         {transactionsData
-          ?.filter((transaction) => transaction?.createdAt?.includes(query))
+          ?.filter((transaction) => {
+            console.log(transaction);
+            return (
+              transaction?.createdAt?.includes(query) ||
+              `${transaction?.amount}`.includes(query)
+            );
+          })
           ?.filter((transaction) => transaction?.type?.includes(type))
           ?.map((transaction) => (
-            <div key={transaction.id} className="col-3">
-              <h1>{transaction?.type}</h1>
-              <p>{transaction?.amount}</p>
-              <p>{transaction?.createdAt}</p>
+            <div
+              key={transaction.id}
+              className="col-3"
+              style={
+                //if statement
+                transaction.type == "deposit"
+                  ? {
+                      backgroundColor: "green",
+                    }
+                  : { backgroundColor: "red" }
+                //if statement
+              }
+            >
+              <h1>type:{transaction?.type}</h1>
+              <p>amount:{transaction?.amount}</p>
+              <p>createdAt:{transaction?.createdAt}</p>
+              <p>from:{transaction?.from}</p>
+              <p>to:{transaction?.to}</p>
+              <p>updatedAt:{transaction?.updatedAt}</p>
             </div>
           ))}
       </div>
