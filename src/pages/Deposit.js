@@ -61,6 +61,9 @@ export const Deposit = () => {
   const { mutate: withdrawM } = useMutation({
     mutationKey: [`withdraw`],
     mutationFn: () => withdraw(amount),
+    //
+
+    //
   });
 
   //
@@ -76,7 +79,16 @@ export const Deposit = () => {
   });
   //
   return (
-    <div>
+    <div
+    // if amount negative
+
+    // amount <0
+
+    // : { backgroundColor: "red" }
+
+    // if amount negative
+    >
+      {/* {amount > users.balance ? alert("your broke dude") : <></>} */}
       <div
         class="p-3 mb-2 bg-danger text-white"
         //oldstyle
@@ -142,7 +154,14 @@ export const Deposit = () => {
             onChange={useramount}
           />
 
-          <button onClick={() => depositM()}>click here to deposit</button>
+          <button
+            onClick={() => depositM()}
+            //
+
+            //
+          >
+            click here to deposit
+          </button>
         </div>
         {/*  */}
         {/*  */}
@@ -162,14 +181,27 @@ export const Deposit = () => {
             gap: "5px",
           }}
         >
+          {/* {amount > users.balance ? alert("your broke dude") : <></>} */}
+
           <h2>Withdraw</h2>
           <input
             type="number"
             placeholder="withdraw amount"
             onChange={useramount}
           />
+          {/* {amount > users.balance ? alert("your broke dude") : <></>} */}
 
-          <button onClick={() => withdrawM()}>click here to withdraw</button>
+          <button
+            // class={amount > users.balance ? alert("your broke dude") : <></>}
+            onClick={() => {
+              //check if valid operation
+              if (amount > users.balance) alert("your broke dude");
+              //check if valid operation
+              withdrawM();
+            }}
+          >
+            click here to withdraw
+          </button>
         </div>
         {/*  */}
         {/*  */}
@@ -205,7 +237,16 @@ export const Deposit = () => {
           {/* inside button below */}
           {/* onClick={() => IncOnClick(amount) } */}
           {/* inside button below */}
-          <button onClick={() => transferM()}>click here to transfer</button>
+          <button
+            onClick={() => {
+              //check if valid operation
+              if (amount > users.balance) alert("your broke dude");
+              //check if valid operation
+              transferM();
+            }}
+          >
+            click here to transfer
+          </button>
         </div>
         {/*  */}
       </div>
